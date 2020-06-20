@@ -1,0 +1,67 @@
+package Herança;
+
+import java.util.HashSet;
+
+import javax.print.attribute.HashAttributeSet;
+
+public class Artista {
+
+	private String nome;
+	private String cpf;
+	private HashSet<Televisão> televisão = new HashSet<>();
+
+	public Artista(String nome, String cpf) {
+		this.nome = nome;
+		this.cpf = cpf;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void addTelevisão(Televisão t) {
+		if (this.televisão.contains(t)) {
+			return;
+		}
+		this.televisão.add(t);
+	}
+
+	public HashSet<Televisão> getTelevisão() {
+		return televisão;
+	}
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Artista other = (Artista) obj;
+		if (cpf == null) {
+			if (other.cpf != null)
+				return false;
+		} else if (!cpf.equals(other.cpf))
+			return false;
+		return true;
+	}
+	@Override
+	public String toString() {
+		return "Artista [nome=" + nome + ", cpf=" + cpf +  "]";
+	}
+
+}

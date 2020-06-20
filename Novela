@@ -1,0 +1,12 @@
+package Herança;
+
+import java.util.Date;
+
+public class Novela extends Televisão {
+
+	public Novela(String título, Date dataDePublicação, Artista[] artistas) {
+		super(título, dataDePublicação, artistas);
+
+	}
+
+}

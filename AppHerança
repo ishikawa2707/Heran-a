@@ -1,0 +1,26 @@
+package Herança;
+
+import java.util.Date;
+
+public class AppHerança {
+
+	public static void main(String[] args) {
+		Artista fabio = new Artista("Fabio Silva", "077.654.654.88");
+		Artista rafaela = new Artista("Rafaela Silva", "077.654.654.88");
+
+		Televisão america = new Novela("Novela das 9 America", new Date(2010, 1, 10), new Artista[] { fabio, rafaela });
+		Televisão TropaDeElite = new Filme("Filme Tropa de Elite", new Date(2012, 4, 23), new Artista[] { fabio });
+
+		imprimirPublicaçõesDoAutorNoConsole(fabio);
+		imprimirPublicaçõesDoAutorNoConsole(rafaela);
+	}
+
+	private static void imprimirPublicaçõesDoAutorNoConsole(Artista artistaQualquer) {
+		System.out.println();
+		System.out.println("**************************");
+		System.out.println("Papeis na televisão de: " + artistaQualquer);
+		for (Televisão t : artistaQualquer.getTelevisão()) {
+			System.out.println("  " + t);
+		}
+	}
+}

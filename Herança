@@ -1,0 +1,75 @@
+package Herança;
+
+import java.util.Date;
+import java.util.HashSet;
+
+public abstract class Televisão {
+	private String título;
+	private Date dataDePublicação;
+	private HashSet<Artista> artistas = new HashSet<>();
+
+	public Televisão(String título, Date dataDePublicação, Artista[] artistas) {
+		this.título = título;
+		this.dataDePublicação = dataDePublicação;
+		for (Artista a : artistas) {
+			this.artistas.add(a);
+			a.addTelevisão(this);
+		}
+	}
+
+	public HashSet<Artista> getArtistas() {
+		return artistas;
+	}
+
+	public String getTítulo() {
+		return título;
+	}
+
+	public Date getDataDePublicação() {
+		return dataDePublicação;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((artistas == null) ? 0 : artistas.hashCode());
+		result = prime * result + ((dataDePublicação == null) ? 0 : dataDePublicação.hashCode());
+		result = prime * result + ((título == null) ? 0 : título.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Televisão other = (Televisão) obj;
+		if (artistas == null) {
+			if (other.artistas != null)
+				return false;
+		} else if (!artistas.equals(other.artistas))
+			return false;
+		if (dataDePublicação == null) {
+			if (other.dataDePublicação != null)
+				return false;
+		} else if (!dataDePublicação.equals(other.dataDePublicação))
+			return false;
+		if (título == null) {
+			if (other.título != null)
+				return false;
+		} else if (!título.equals(other.título))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return  this.getClass().getSimpleName() + " [título=" + título + ", dataDePublicação=" + dataDePublicação + ", artistas=" + artistas
+				+ "]";
+	}
+
+}
